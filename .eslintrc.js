@@ -8,17 +8,15 @@ module.exports = {
     parser: 'babel-eslint'
   },
   extends: [
-    // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
-    // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
-    'plugin:vue/essential'
+    'eslint:recommended',
+    'plugin:vue/recommended',
+    '@nuxtjs'
   ],
-  // required to lint *.vue files
   plugins: [
     'vue'
   ],
   // add your custom rules here
   rules: {
-	"indent": ["error", "tab"],
-  	"no-tabs": 0
+    'vue/max-attributes-per-line': 'off',
   }
 }

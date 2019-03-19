@@ -2,7 +2,11 @@ module.exports = {
 	mode: 'spa',
 	head: {title: 'soundstream-box'}, // Headers of the page
 	loading: false, // Disable default loading bar
+	dev: process.env.NODE_ENV === 'DEV',
+	plugins: ['~/plugins/vuetify.js'],
+	css: ['~/assets/style/app.styl'],
 	build: {
+		extractCSS: true,
 		extend (config, { isDev, isClient }) {
 			if (isDev && isClient) {
 				// Run ESLint on save
@@ -17,8 +21,4 @@ module.exports = {
 			if (isClient) { config.target = 'electron-renderer' }
 		}
 	},
-	dev: process.env.NODE_ENV === 'DEV',
-	css: [
-		'@/assets/css/global.css'
-	]
 }
