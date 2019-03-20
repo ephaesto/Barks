@@ -1,31 +1,56 @@
 <template>
-	<section class="container">
-		<div>
-			<img width="256" src="~/assets/img/logo.png">
-			<h1>soundstream-box</h1>
-			<h2>Nuxt + Electron</h2>
-			<a href="https://nuxtjs.org/" target="_blank" class="btn btn-primary">Documentation</a>
-			<a href="https://github.com/nuxt/nuxt.js" target="_blank" class="btn btn-primary">GitHub</a>
-			<a href="https://electronjs.org/" target="_blank" class="btn btn-secondary">Electron</a>
-			<a href="https://github.com/electron-userland/electron-builder" target="_blank" class="btn btn-secondary">Electron Builder</a>
-		</div>
-	</section>
+  <v-layout align-center justify-center>
+    <v-flex xs12 sm8 md4>
+      <v-card class="elevation-12">
+        <v-toolbar>
+          <v-toolbar-title>Login</v-toolbar-title>
+          <v-spacer />
+          <v-icon large>
+            help_outline
+          </v-icon>
+        </v-toolbar>
+        <v-card-text>
+          <v-form>
+            <v-text-field
+              v-model="email"
+              v-validate="'required|email'"
+              prepend-icon="person"
+              name="login"
+              label="E-mail"
+              type="text"
+              error-messages="ll"
+              data-vv-name="email"
+              required
+            />
+          </v-form>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer />
+          <v-btn @click="submit">
+            Login
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
 export default {
+  layout: 'none',
+  data: () => ({
+    email: '',
+    password: ''
+  }),
+  methods: {
+    submit() {
+      this.$validator.validateAll()
+    }
+  }
 }
 </script>
 
-<style scoped>
-.container {
-	min-height: 100vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-}
-.btn {
-	margin: 0 8px;
-}
+<style lang="stylus" scoped>
+    .v-toolbar
+        background: linear-gradient(to right, #f7b733, #fc4a1a);
 </style>
