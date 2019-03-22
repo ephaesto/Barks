@@ -11,7 +11,7 @@ import {remote} from 'electron'
   export default {
     data() {
       return {
-        urlfile:'',
+        urlfile:[],
         dialog:remote.dialog
       }
     },
