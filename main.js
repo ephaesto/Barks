@@ -4,7 +4,7 @@ const path = require('path')
 const electron = require('electron')
 const { Nuxt, Builder } = require('nuxt')
 const config = require('./nuxt.config.js')
-const { default: installExtension, VUEJS_DEVTOOLS } = require('electron-devtools-installer')
+
 
 config.rootDir = __dirname // for electron-builder
 
@@ -31,12 +31,15 @@ let win = null
 const app = electron.app
 const newWin = () => {
   win = new electron.BrowserWindow({
-    icon: path.join(__dirname, 'static/icon.png')
+    icon: path.join(__dirname, 'static/icon.png'),
+    webPreferences: {
+      webSecurity: false
+    }
   })
   win.maximize()
   win.on('closed', () => { win = null })
   if (config.dev) {
-
+    const { default: installExtension, VUEJS_DEVTOOLS } = require('electron-devtools-installer')
     installExtension(VUEJS_DEVTOOLS.id).then((name) => {
       /* eslint-disable no-alert, no-console */
       console.log(`Added Extension:  ${name}`)
