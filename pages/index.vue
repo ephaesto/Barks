@@ -8,16 +8,16 @@
 
 <script>
 import {remote} from 'electron'
-const {dialog} =remote;
   export default {
     data() {
       return {
-        urlfile:''
+        urlfile:'',
+        dialog:remote.dialog
       }
     },
     methods: {
       OpenFile:function(){
-        dialog.showOpenDialog((fileName) => {
+        this.dialog.showOpenDialog((fileName) => {
           /* eslint-disable no-alert, no-console */
             console.log(fileName)
           /* eslint-enable no-alert, no-console */
