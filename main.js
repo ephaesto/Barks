@@ -39,18 +39,6 @@ const newWin = () => {
   win.maximize()
   win.on('closed', () => { win = null })
   if (config.dev) {
-    const { default: installExtension, VUEJS_DEVTOOLS } = require('electron-devtools-installer')
-    installExtension(VUEJS_DEVTOOLS.id).then((name) => {
-      /* eslint-disable no-alert, no-console */
-      console.log(`Added Extension:  ${name}`)
-      /* eslint-enable no-alert, no-console */
-      win.webContents.openDevTools()
-    }).catch(
-       /* eslint-disable no-alert, no-console */
-      err => console.log('An error occurred: ', err)
-      /* eslint-enable no-alert, no-console */
-      )
-    
     const pollServer = () => {
       http.get(_NUXT_URL_, (res) => {
         if (res.statusCode === 200) { win.loadURL(_NUXT_URL_) } else { setTimeout(pollServer, 300) }
@@ -58,7 +46,24 @@ const newWin = () => {
     }
     pollServer()
   } else { return win.loadURL(_NUXT_URL_) }
+  
+  if (config.dev) {
+    win.webContents.on('did-finish-load', () => {
+      const { default: installExtension, VUEJS_DEVTOOLS } = require('electron-devtools-installer')
+      installExtension(VUEJS_DEVTOOLS.id).then((name) => {
+        /* eslint-disable no-alert, no-console */
+        console.log(`Added Extension:  ${name}`)
+        /* eslint-enable no-alert, no-console */
+        win.webContents.openDevTools()
+      }).catch(
+        /* eslint-disable no-alert, no-console */
+        err => console.log('An error occurred: ', err)
+        /* eslint-enable no-alert, no-console */
+        )
+    })
+  }
 }
+
 app.on('ready', newWin)
 app.on('window-all-closed', () => app.quit())
 app.on('activate', () => win === null && newWin())
