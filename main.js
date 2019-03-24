@@ -30,7 +30,7 @@ console.log(`Nuxt working on ${_NUXT_URL_}`)
 let win = null 
 const newWin = () => {
   win = new BrowserWindow({
-    icon: path.join(__dirname, 'static/icon.png'),
+    icon: path.join(__dirname, 'static/icon.ico'),
     webPreferences: {
       webSecurity: false
     }
