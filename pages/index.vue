@@ -9,6 +9,11 @@
     <v-btn color="brown" @click="StopSound">
       StopSound
     </v-btn>
+    <div>
+      <v-btn color="warning" fab dark>
+        <v-icon>account_circle</v-icon>
+      </v-btn>
+    </div>
   </div>
 </template>
 
