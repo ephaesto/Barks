@@ -113,6 +113,16 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
+"@fortawesome/fontawesome-free@^5.8.1":
+  version "5.8.1"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.8.1.tgz#cbafbfe8894c4e3e3c3a9da6774e249ac1f2da8b"
+  integrity sha512-GJtx6e55qLEOy2gPOsok2lohjpdWNGrYGtQx0FFT/++K4SYx+Z8LlPHdQBaFzKEwH5IbBB4fNgb//uyZjgYXoA==
+
+"@mdi/font@^3.5.95":
+  version "3.5.95"
+  resolved "https://registry.yarnpkg.com/@mdi/font/-/font-3.5.95.tgz#422d1982566b4a0577b457cd0acc2168ee8343c3"
+  integrity sha512-WHSJ0TJ70qkn+EPsW9w22pQU+kjEnRZlfN4N7xsFFmKa6VhpdQcwTWqj9PDH3oq6Be2p0IW/VDURJvPWDnBAUw==
+
 "@nuxtjs/eslint-config@^0.0.1":
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/@nuxtjs/eslint-config/-/eslint-config-0.0.1.tgz#3aeed1cc6a2e01331c7e6b56bfa7152ce8bb2d90"
