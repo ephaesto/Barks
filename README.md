@@ -1,4 +1,6 @@
-# soundstream-box
+![Barks Logo](http://zupimages.net/viewer.php?id=19/12/eh4v.png)
+
+# Barks
 
 > Nuxt + Electron
 
