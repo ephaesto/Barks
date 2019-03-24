@@ -1,6 +1,6 @@
 module.exports = {
   mode: 'spa',
-  head: { title: 'soundstream-box' }, // Headers of the page
+  head: { title: 'Barks' }, // Headers of the page
   loading: false, // Disable default loading bar
   dev: process.env.NODE_ENV === 'DEV',
   plugins: ['~/plugins/vuetify.js'],

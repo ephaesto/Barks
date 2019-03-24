@@ -1,7 +1,7 @@
 
-const http = require('http')
+const { createServer, get:httpGet} = require('http')
 const path = require('path')
-const electron = require('electron')
+const { app, BrowserWindow} = require('electron')
 const { Nuxt, Builder } = require('nuxt')
 const config = require('./nuxt.config.js')
 
@@ -10,7 +10,7 @@ config.rootDir = __dirname // for electron-builder
 
 const nuxt = new Nuxt(config)
 const builder = new Builder(nuxt)
-const server = http.createServer(nuxt.render)
+const server = createServer(nuxt.render)
 
 if (config.dev) {
   builder.build().catch((err) => {
@@ -28,9 +28,8 @@ console.log(`Nuxt working on ${_NUXT_URL_}`)
 /* eslint-enable no-alert, no-console */
 
 let win = null 
-const app = electron.app
 const newWin = () => {
-  win = new electron.BrowserWindow({
+  win = new BrowserWindow({
     icon: path.join(__dirname, 'static/icon.png'),
     webPreferences: {
       webSecurity: false
@@ -40,7 +39,7 @@ const newWin = () => {
   win.on('closed', () => { win = null })
   if (config.dev) {
     const pollServer = () => {
-      http.get(_NUXT_URL_, (res) => {
+      httpGet(_NUXT_URL_, (res) => {
         if (res.statusCode === 200) { win.loadURL(_NUXT_URL_) } else { setTimeout(pollServer, 300) }
       }).on('error', pollServer)
     }
