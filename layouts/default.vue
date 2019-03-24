@@ -1,7 +1,7 @@
 <template>
   <v-app :dark="dark">
     <v-toolbar app>
-      <v-toolbar-title>{{ soundStreamBoxName }}</v-toolbar-title>
+      <v-toolbar-title>{{ barksName }}</v-toolbar-title>
     </v-toolbar>
     <v-content>
       <nuxt />
@@ -16,7 +16,7 @@
   export default {
     data() {
       return {
-        soundStreamBoxName: 'SoundStream-Box',
+        barksName: 'Barks',
         dark: true
       }
     },

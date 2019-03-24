@@ -1,6 +1,64 @@
 module.exports = {
   mode: 'spa',
-  head: { title: 'Barks' }, // Headers of the page
+  head: {
+    title: 'Barks',
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: 'BackOffice Online' }
+    ],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        href: '~/assets/fonts/Roboto-Black.ttf'
+      },
+      {
+        rel: 'stylesheet',
+        href: '~/assets/fonts/Roboto-BlackItalic.ttf'
+      },
+      {
+        rel: 'stylesheet',
+        href: '~/assets/fonts/Roboto-Bold.ttf'
+      },
+      {
+        rel: 'stylesheet',
+        href: '~/assets/fonts/Roboto-BoldItalic.ttf'
+      },
+      {
+        rel: 'stylesheet',
+        href: '~/assets/fonts/Roboto-Italic.ttf'
+      },
+      {
+        rel: 'stylesheet',
+        href: '~/assets/fonts/Roboto-Light.ttf'
+      },
+      {
+        rel: 'stylesheet',
+        href: '~/assets/fonts/Roboto-LightItalic.ttf'
+      },
+      {
+        rel: 'stylesheet',
+        href: '~/assets/fonts/Roboto-Medium.ttf'
+      },
+      {
+        rel: 'stylesheet',
+        href: '~/assets/fonts/Roboto-MediumItalic.ttf'
+      },
+      {
+        rel: 'stylesheet',
+        href: '~/assets/fonts/Roboto-Regular.ttf'
+      },
+      {
+        rel: 'stylesheet',
+        href: '~/assets/fonts/Roboto-Thin.ttf'
+      },
+      {
+        rel: 'stylesheet',
+        href: '~/assets/fonts/Roboto-ThinItalic.ttf'
+      }
+    ]
+  },
   loading: false, // Disable default loading bar
   dev: process.env.NODE_ENV === 'DEV',
   plugins: ['~/plugins/vuetify.js'],
