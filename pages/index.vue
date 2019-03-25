@@ -10,7 +10,7 @@
       StopSound
     </v-btn>
     <div>
-      <v-btn color="warning" fab dark>
+      <v-btn color="warning" fab dark @click="showPath">
         <v-icon>account_circle</v-icon>
       </v-btn>
     </div>
@@ -20,6 +20,7 @@
 <script>
 import {remote} from 'electron'
 import {Howl} from 'howler'
+import os from 'os'
   export default {
     data() {
       return {
@@ -31,7 +32,18 @@ import {Howl} from 'howler'
     methods: {
       OpenFile:function(){
         this.dialog.showOpenDialog((fileName) => {
-          this.urlfile=fileName
+
+          if(os.platform() === 'win32'){
+            return this.urlfile=fileName
+          }
+          /* eslint-disable no-alert, no-console */
+        console.log(fileName)
+        /* eslint-enable no-alert, no-console */
+         fileName = fileName.map((path)=>{ return `**${path}`})
+         /* eslint-disable no-alert, no-console */
+        console.log(fileName)
+        /* eslint-enable no-alert, no-console */
+         return this.urlfile=fileName
         })
       },
       PlaySound:function(){
@@ -47,6 +59,12 @@ import {Howl} from 'howler'
         if(this.sound){
          this.sound.stop()
         }
+      },
+      showPath:function(){
+         /* eslint-disable no-alert, no-console */
+        console.log(this.urlfile)
+        console.log(os.platform())
+        /* eslint-enable no-alert, no-console */
       }
     }
   }
