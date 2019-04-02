@@ -14,6 +14,17 @@
         <v-icon>account_circle</v-icon>
       </v-btn>
     </div>
+    <div>
+      <v-btn color="primari" fab dark @click="minimize">
+        <v-icon>remove</v-icon>
+      </v-btn>
+      <v-btn color="primari" fab dark @click="unmaximize">
+        <v-icon>crop_original</v-icon>
+      </v-btn>
+      <v-btn color="primari" fab dark @click="close">
+        <v-icon>clear</v-icon>
+      </v-btn>
+    </div>
   </div>
 </template>
 
@@ -39,7 +50,7 @@ import os from 'os'
           /* eslint-disable no-alert, no-console */
         console.log(fileName)
         /* eslint-enable no-alert, no-console */
-         fileName = fileName.map((path)=>{ return `**${path}`})
+         fileName = fileName.map((path)=>{ return `file://${path}`})
          /* eslint-disable no-alert, no-console */
         console.log(fileName)
         /* eslint-enable no-alert, no-console */
@@ -64,8 +75,19 @@ import os from 'os'
          /* eslint-disable no-alert, no-console */
         console.log(this.urlfile)
         console.log(os.platform())
+        console.log(remote.getCurrentWindow())
         /* eslint-enable no-alert, no-console */
+      },
+      close:function(){
+        remote.getCurrentWindow().close()
+      },
+      unmaximize:function(){
+        remote.getCurrentWindow().unmaximize()
+      },
+      minimize:function(){
+        remote.getCurrentWindow().minimize()
       }
+    
     }
   }
 </script>
