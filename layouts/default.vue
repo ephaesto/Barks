@@ -1,8 +1,6 @@
 <template>
-  <v-app :dark="dark">
-    <v-toolbar app>
-      <v-toolbar-title>{{ barksName }}</v-toolbar-title>
-    </v-toolbar>
+  <v-app dark>
+    <navbar-top />
     <v-content>
       <nuxt />
     </v-content>
@@ -13,13 +11,24 @@
 </template>
 
 <script>
+  import NavbarTop from '~/components/layouts/NavbarTop'
   export default {
+    components: {
+      NavbarTop
+    },
     data() {
       return {
         barksName: 'Barks',
-        dark: true
       }
     },
   }
 </script>
+
+<style lang="stylus">
+  body::-webkit-scrollbar 
+    display none
+    
+    
+</style>
+
 
