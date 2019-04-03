@@ -35,15 +35,11 @@ const newWin = () => {
     myIcon =  path.join(__dirname, 'static/icon.ico')
   }
   win = new BrowserWindow({
-<<<<<<< HEAD
-    icon: myIcon,
-=======
     backgroundColor: '#303030',
     frame: false,
     width: 1600,
     height: 900,
-    icon: path.join(__dirname, 'static/icon.ico'),
->>>>>>> create new navbar for resize maximise and close
+    icon: myIcon,
     webPreferences: {
       webSecurity: false
     }
