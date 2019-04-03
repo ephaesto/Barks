@@ -4,7 +4,7 @@ const path = require('path')
 const { app, BrowserWindow} = require('electron')
 const { Nuxt, Builder } = require('nuxt')
 const config = require('./nuxt.config.js')
-
+const os = require('os')
 
 config.rootDir = __dirname // for electron-builder
 
@@ -29,8 +29,13 @@ console.log(`Nuxt working on ${_NUXT_URL_}`)
 
 let win = null 
 const newWin = () => {
+
+  let myIcon =  path.join(__dirname, 'static/icon.png')
+  if(os.platform() === 'win32'){
+    myIcon =  path.join(__dirname, 'static/icon.ico')
+  }
   win = new BrowserWindow({
-    icon: path.join(__dirname, 'static/icon.ico'),
+    icon: myIcon,
     webPreferences: {
       webSecurity: false
     }
