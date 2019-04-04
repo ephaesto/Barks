@@ -34,28 +34,45 @@ const newWin = () => {
   if(os.platform() === 'win32'){
     myIcon =  path.join(__dirname, 'static/icon.ico')
   }
+
   win = new BrowserWindow({
     backgroundColor: '#303030',
     frame: false,
     width: 1600,
     height: 900,
     icon: myIcon,
+    show: false, 
     webPreferences: {
       webSecurity: false
     }
   })
-  win.maximize()
+
+  let splash = new BrowserWindow({
+    width: 810, 
+    height: 610, 
+    transparent: true, 
+    frame: false, 
+    icon: myIcon,
+    alwaysOnTop: true
+  });
+    splash.loadURL(path.join(__dirname, 'assets/splashScreen/splash.html'));
+
   win.on('closed', () => { win = null })
+
   if (config.dev) {
     const pollServer = () => {
       httpGet(_NUXT_URL_, (res) => {
-        if (res.statusCode === 200) { win.loadURL(_NUXT_URL_) } else { setTimeout(pollServer, 300) }
+        if (res.statusCode === 200) { 
+          win.loadURL(_NUXT_URL_) 
+        } else { 
+          setTimeout(pollServer, 300) 
+        }
       }).on('error', pollServer)
     }
     pollServer()
-  } else { return win.loadURL(_NUXT_URL_) }
+  } else { win.loadURL(_NUXT_URL_) }
   
-  if (config.dev) {
+if (config.dev) {
     win.webContents.on('did-finish-load', () => {
       const { default: installExtension, VUEJS_DEVTOOLS } = require('electron-devtools-installer')
       installExtension(VUEJS_DEVTOOLS.id).then((name) => {
@@ -70,6 +87,12 @@ const newWin = () => {
         )
     })
   }
+
+  win.once('ready-to-show', () => {
+    splash.destroy();
+    win.show();
+    win.maximize()
+  });
 }
 
 app.on('ready', newWin)
