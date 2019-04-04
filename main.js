@@ -13,6 +13,9 @@ const builder = new Builder(nuxt)
 const server = createServer(nuxt.render)
 
 if (config.dev) {
+  const websocket = require('ws');
+  new websocket.Server({ server });
+
   builder.build().catch((err) => {
     /* eslint-disable no-alert, no-console */
     console.error(err) // eslint-disable-line no-console
