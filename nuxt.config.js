@@ -11,51 +11,63 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       {
         rel: 'stylesheet',
-        href: '~/assets/fonts/Roboto-Black.ttf'
+        type:'text/css',
+        href: './assets/fonts/Roboto-Black.ttf'
       },
       {
         rel: 'stylesheet',
-        href: '~/assets/fonts/Roboto-BlackItalic.ttf'
+        type:'text/css',
+        href: './assets/fonts/Roboto-BlackItalic.ttf'
       },
       {
         rel: 'stylesheet',
-        href: '~/assets/fonts/Roboto-Bold.ttf'
+        type:'text/css',
+        href: './assets/fonts/Roboto-Bold.ttf'
       },
       {
         rel: 'stylesheet',
-        href: '~/assets/fonts/Roboto-BoldItalic.ttf'
+        type:'text/css',
+        href: './assets/fonts/Roboto-BoldItalic.ttf'
       },
       {
         rel: 'stylesheet',
-        href: '~/assets/fonts/Roboto-Italic.ttf'
+        type:'text/css',
+        href: './assets/fonts/Roboto-Italic.ttf'
       },
       {
         rel: 'stylesheet',
-        href: '~/assets/fonts/Roboto-Light.ttf'
+        type:'text/css',
+        href: './assets/fonts/Roboto-Light.ttf'
       },
       {
         rel: 'stylesheet',
-        href: '~/assets/fonts/Roboto-LightItalic.ttf'
+        type:'text/css',
+        href: './assets/fonts/Roboto-LightItalic.ttf'
       },
       {
         rel: 'stylesheet',
-        href: '~/assets/fonts/Roboto-Medium.ttf'
+        type:'text/css',
+        href: './assets/fonts/Roboto-Medium.ttf'
       },
       {
         rel: 'stylesheet',
-        href: '~/assets/fonts/Roboto-MediumItalic.ttf'
+        type:'text/css',
+        href: './assets/fonts/Roboto-MediumItalic.ttf'
       },
       {
         rel: 'stylesheet',
-        href: '~/assets/fonts/Roboto-Regular.ttf'
+        type:'text/css',
+        href: './assets/fonts/Roboto-Regular.ttf'
       },
       {
         rel: 'stylesheet',
-        href: '~/assets/fonts/Roboto-Thin.ttf'
+        type:'text/css',
+        href: './assets/fonts/Roboto-Thin.ttf'
       },
       {
         rel: 'stylesheet',
-        href: '~/assets/fonts/Roboto-ThinItalic.ttf'
+        type:'text/css',
+        href: './assets/fonts/Roboto-ThinItalic.ttf'
       }
     ]
   },
