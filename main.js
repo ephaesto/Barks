@@ -18,7 +18,7 @@ if (config.dev) {
 
   builder.build().catch((err) => {
     /* eslint-disable no-alert, no-console */
-    console.error(err) // eslint-disable-line no-console
+    console.error(err) 
     /* eslint-enable no-alert, no-console */
     process.exit(1)
   })
