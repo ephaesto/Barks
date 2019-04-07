@@ -10,16 +10,16 @@
 
     <v-spacer />
 
-    <v-btn margin="0" icon @click="minimize">
+    <v-btn margin="0" icon @click="minimizeWindows">
       🗕
     </v-btn>
-    <v-btn v-if="!Maximize" margin="0" icon @click="unmaximize">
+    <v-btn v-if="Maximize" margin="0" icon @click="unmaximizeWindows">
       🗗
     </v-btn>
-    <v-btn v-if="Maximize" margin="0" icon @click="maximize">
+    <v-btn v-if="!Maximize" margin="0" icon @click="maximizeWindows">
       🗖
     </v-btn>
-    <v-btn margin="0" icon @click="close">
+    <v-btn margin="0" icon @click="closeWindows">
       🗙
     </v-btn>
   </v-toolbar>
@@ -33,29 +33,42 @@
     data() {
       return {
         MusicPlay:'BJH',
-        Maximize:!(remote.getCurrentWindow().isMaximized()),
+        Maximize:(remote.getCurrentWindow().isMaximized()),
         Logo:logo,
-        Env: process.env.NODE_ENV === "development"
+        Env: process.env.NODE_ENV === "development",
+        WindowSize:window.innerWidth
 
       }
     },
+    mounted() {
+      window.addEventListener('resize', this.onResize)
+    },
+
+    beforeDestroy() {
+      window.removeEventListener('resize', this.onResize)
+    },
     methods: {
-      close:function(){
+      closeWindows:function(){
         remote.getCurrentWindow().close()
       },
-      unmaximize:function(){
+      unmaximizeWindows:function(){
         remote.getCurrentWindow().unmaximize()
-        this.Maximize = true
-      },
-      maximize:function(){
-        remote.getCurrentWindow().maximize()
         this.Maximize = false
       },
-      minimize:function(){
+      maximizeWindows:function(){
+        remote.getCurrentWindow().maximize()
+        this.Maximize = true
+      },
+      minimizeWindows:function(){
         remote.getCurrentWindow().minimize()
       },
       devTools:function(){
         remote.getCurrentWindow().toggleDevTools()
+      },
+      onResize() {
+        if(!(remote.getCurrentWindow().isMaximized())){
+            this.Maximize = false
+        }
       }
     }
   }
@@ -64,6 +77,7 @@
 <style lang="stylus" scoped>
    .v-toolbar
     padding 5px !important
+    -webkit-app-region: drag 
     .v-toolbar__title 
       font-size 14px
     button 
@@ -72,6 +86,7 @@
       height 20px
       width 20px
       margin 0 10px
+      -webkit-app-region: no-drag
       &:hover
         background-color #595959
 

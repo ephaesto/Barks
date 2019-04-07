@@ -4,9 +4,9 @@
   "description": "Nuxt + Electron",
   "author": "emeric <emeric.lebbrecht@gmail.com>",
   "private": true,
-  "main": "main.js",
+  "main": "assets/electronApp.js",
   "build": {
-    "appId": "",
+    "appId": "com.electron.barks",
     "directories": {
       "buildResources": "static"
     }
