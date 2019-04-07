@@ -27,8 +27,6 @@
 <style lang="stylus">
   body::-webkit-scrollbar 
     display none
-    
-    
 </style>
 
 
