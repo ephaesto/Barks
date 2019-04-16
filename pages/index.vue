@@ -13,12 +13,15 @@
       <v-btn color="warning" fab dark @click="showPath">
         <v-icon>account_circle</v-icon>
       </v-btn>
+      <v-btn color="red" fab dark @click="newWindows">
+        <v-icon>account_circle</v-icon>
+      </v-btn>
     </div>
   </div>
 </template>
 
 <script>
-import {remote} from 'electron'
+import {remote,ipcRenderer as ipc} from 'electron'
 import {Howl} from 'howler'
   export default {
     data() {
@@ -53,7 +56,14 @@ import {Howl} from 'howler'
         console.log(this.urlfile)
         console.log(remote.getCurrentWindow())
         /* eslint-enable no-alert, no-console */
+      },
+      newWindows:function(){
+        ipc.send('setValueButton')
+        ipc.on('closedWindows', function () {
+            window.focus()
+        })
       }
+      
     }
   }
 </script>
