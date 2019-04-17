@@ -3,7 +3,14 @@
 # Barks
 
 > Nuxt + Electron
+
 50% 50% 50% 50% / 30% 70% 30% 70%
+
+#36236F
+
+#D519BC
+
+#E37612
 
 ## Build Setup
 
