@@ -8,9 +8,9 @@
 
 #36236F
 
-#D519BC
+#B130BC
 
-#E37612
+#E3B712
 
 ## Build Setup
 
