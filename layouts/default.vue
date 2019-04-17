@@ -4,17 +4,17 @@
     <v-content>
       <nuxt />
     </v-content>
-    <v-footer app>
-      This is the footer
-    </v-footer>
+    <my-footer />
   </v-app>
 </template>
 
 <script>
   import NavbarTop from '~/components/layouts/NavbarTop'
+  import MyFooter from '~/components/layouts/MyFooter'
   export default {
     components: {
-      NavbarTop
+      NavbarTop,
+      MyFooter
     },
     data() {
       return {
