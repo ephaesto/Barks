@@ -1,6 +1,7 @@
 <template>
   <v-app dark>
     <navbar-top />
+    <navbar-side />
     <v-content>
       <nuxt />
     </v-content>
@@ -10,10 +11,12 @@
 
 <script>
   import NavbarTop from '~/components/layouts/NavbarTop'
+  import NavbarSide from '~/components/layouts/NavbarTop'
   import MyFooter from '~/components/layouts/MyFooter'
   export default {
     components: {
       NavbarTop,
+      NavbarSide,
       MyFooter
     },
     data() {

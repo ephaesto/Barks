@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer-app">
+  <footer >
     <p class="ma-0 caption">
       author : emeric lebbrecht
     </p>
@@ -16,7 +16,7 @@
 </script>
 
 <style lang="stylus" scoped>
-  .footer-app
+  footer
     background #303030
     display flex
     flex-direction row
@@ -25,6 +25,7 @@
     position fixed
     left 0
     bottom 0
+    margin-left 50px
     padding 5px 20px 5px 20px
     width 100%
 
