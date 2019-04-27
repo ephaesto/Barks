@@ -1,11 +1,13 @@
 <template>
-  <footer >
-    <p class="ma-0 caption">
-      author : emeric lebbrecht
-    </p>
-    <p class="ma-0 caption">
-      version : 0.0.1
-    </p>
+  <footer>
+    <div>
+      <p class="ma-0 caption">
+        author : emeric lebbrecht
+      </p>
+      <p class="ma-0 caption">
+        version : 0.0.1
+      </p>
+    </div>
   </footer>
 </template>
 
@@ -17,17 +19,18 @@
 
 <style lang="stylus" scoped>
   footer
-    background #303030
-    display flex
-    flex-direction row
-    justify-content space-between
-    height 25px 
     position fixed
     left 0
     bottom 0
-    margin-left 50px
-    padding 5px 20px 5px 20px
+    padding-left 50px
+    z-index 996
     width 100%
+    div
+      background #3a3a3a
+      display flex
+      flex-direction row
+      justify-content space-between
+      padding 5px 20px 5px 20px
 
 </style>
 

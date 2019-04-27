@@ -87,12 +87,12 @@
 
 <style lang="stylus" scoped>
    header
-    margin-left 50px
-    padding-left 50px
+    padding-left 100px
     position fixed
     left 0
     top 0
     width 100%
+    z-index 998
     .navtop 
       display flex
       flex-direction row
