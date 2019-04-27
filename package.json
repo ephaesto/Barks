@@ -6,9 +6,19 @@
   "private": true,
   "main": "assets/main.js",
   "build": {
+    "productName": "Barks",
     "appId": "com.electron.barks",
     "directories": {
       "buildResources": "static"
+    },
+    "mac": {
+      "icon": "static/icon.icns"
+    },
+    "win": {
+      "icon": "static/icon.ico"
+    },
+    "linux": {
+      "icon": "static/icons"
     }
   },
   "scripts": {

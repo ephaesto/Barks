@@ -49,13 +49,14 @@ const newWin = () => {
     icon: myIcon,
     show: false, 
     webPreferences: {
-      webSecurity: false
+      webSecurity: false,
+      nodeIntegration: true
     }
   })
 
   let splash = new BrowserWindow({
-    width: 800, 
-    height: 640, 
+    width: 550, 
+    height: 400, 
     transparent: true, 
     frame: false, 
     icon: myIcon,
@@ -102,6 +103,7 @@ const newWin = () => {
     win.show();
     win.maximize()
   });
+
   ipc.on('setValueButton', function () {
   
     let subWin = new BrowserWindow({

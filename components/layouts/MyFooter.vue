@@ -1,12 +1,12 @@
 <template>
-  <v-footer app height="25px" class="py-2 px-5 footer-app">
+  <footer class="footer-app">
     <p class="ma-0 caption">
       author : emeric lebbrecht
     </p>
     <p class="ma-0 caption">
       version : 0.0.1
     </p>
-  </v-footer>
+  </footer>
 </template>
 
 <script>
@@ -17,10 +17,16 @@
 
 <style lang="stylus" scoped>
   .footer-app
+    background #303030
     display flex
     flex-direction row
     justify-content space-between
-    min-height 10px !important
+    height 25px 
+    position fixed
+    left 0
+    bottom 0
+    padding 5px 20px 5px 20px
+    width 100%
 
 </style>
 

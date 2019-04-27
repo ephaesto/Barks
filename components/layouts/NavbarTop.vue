@@ -1,40 +1,51 @@
 <template>
-  <v-toolbar height="20px">
-    <v-img :src="Logo" max-width="20px" max-height="20px" />
-    <v-btn v-if="Env" margin="0" flat @click="devTools">
-      Dev Tools
-    </v-btn>
-    <v-spacer />
+  <header>
+    <div class="navtop">
+      <button v-if="Env" class="devtool" @click="devTools">
+        Dev Tools
+      </button>
 
-    <v-toolbar-title>{{ MusicPlay }} - Barks</v-toolbar-title>
+      <p class="info-music">
+        {{ MusicPlay }} - Barks
+      </p>
 
-    <v-spacer />
-
-    <v-btn margin="0" icon @click="minimizeWindows">
-      🗕
-    </v-btn>
-    <v-btn v-if="Maximize" margin="0" icon @click="unmaximizeWindows">
-      🗗
-    </v-btn>
-    <v-btn v-if="!Maximize" margin="0" icon @click="maximizeWindows">
-      🗖
-    </v-btn>
-    <v-btn margin="0" icon @click="closeWindows">
-      🗙
-    </v-btn>
-  </v-toolbar>
+      
+      <div class="control">
+        <button @click="minimizeWindows">
+          <reduce-icon class="icon-control" />
+        </button>
+        <button v-if="Maximize" @click="unmaximizeWindows">
+          <minimize-icon class="icon-control" />
+        </button>
+        <button v-if="!Maximize" @click="maximizeWindows">
+          <maximize-icon class="icon-control" />
+        </button>
+        <button @click="closeWindows">
+          <close-icon class="icon-control" />
+        </button>
+      </div>
+    </div>  
+  </header>
 </template>
 
 <script>
   import {remote} from 'electron'
-  import logo from '~/static/icons/512x512.png'
+  import ReduceIcon from '~/components/icons/ReduceIcon'
+  import MinimizeIcon from '~/components/icons/MinimizeIcon'
+  import MaximizeIcon from '~/components/icons/MaximizeIcon'
+  import CloseIcon from '~/components/icons/CloseIcon'
   export default {
     name: 'NavbarTop',
+    components: {
+      ReduceIcon,
+      MinimizeIcon,
+      MaximizeIcon,
+      CloseIcon
+    },
     data() {
       return {
         MusicPlay:'BJH',
         Maximize:(remote.getCurrentWindow().isMaximized()),
-        Logo:logo,
         Env: process.env.NODE_ENV === "development",
         WindowSize:window.innerWidth
 
@@ -75,22 +86,40 @@
 </script>
 
 <style lang="stylus" scoped>
-   .v-toolbar
-    padding 5px !important
-    -webkit-app-region: drag 
-    .v-toolbar__title 
+   header
+    padding-left 50px
+    .navtop 
+      display flex
+      flex-direction row
+      flex-wrap wrap
+      justify-content space-between
+      align-items center
+      padding 0 5px
+      -webkit-app-region: drag 
+      .control
+        display flex
+        flex-direction row
+        flex-wrap wrap
+        justify-content space-between
+        align-items center
+        padding 5px
+        button 
+          display block
+          width 18px
+          height 18px
+          -webkit-app-region: no-drag
+          margin 0 5px
+          padding 2px
+          .icon-control
+            svg 
+              width 18px
+              height 18px
+              .color-fill
+                fill wihte
+    .info-music
       font-size 14px
-    button 
       margin 0
+    .devtool
       display block
-      height 20px
-      width 20px
-      margin 0 10px
       -webkit-app-region: no-drag
-      &:hover
-        background-color #595959
-
-    .v-btn--active:before, .v-btn:hover:before, .v-btn:focus:before 
-      background-color  transparent
-    
 </style>
