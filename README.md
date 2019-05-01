@@ -1,5 +1,5 @@
-![Barks Logo](https://zupimages.net/up/19/18/hxm9.png)
-
+                                       ![Barks Logo](https://zupimages.net/up/19/18/hxm9.png)
+                                       ![Barks Logo](https://zupimages.net/up/19/18/ddok.png)
 # Barks
 
 > Nuxt + Electron
