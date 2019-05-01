@@ -1,7 +1,7 @@
 <p align="center">
   <img width="128" height="128" src="https://zupimages.net/up/19/18/ddok.png">
 </p>
-# Barks
+## Barks
 
 > Nuxt + Electron
 
