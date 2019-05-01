@@ -2,7 +2,7 @@
   <header>
     <div class="navtop">
       <button v-if="Env" class="devtool" @click="devTools">
-        Dev Tools
+        Devtools
       </button>
 
       <p class="info-music">
@@ -85,9 +85,9 @@
   }
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus" >
    header
-    padding-left 100px
+    padding-left 150px
     position fixed
     left 0
     top 0
@@ -99,7 +99,7 @@
       flex-wrap wrap
       justify-content space-between
       align-items center
-      padding 0 5px
+      overflow hidden
       -webkit-app-region: drag 
       .control
         display flex
@@ -107,24 +107,38 @@
         flex-wrap wrap
         justify-content space-between
         align-items center
-        padding 5px
+        height 100%
         button 
           display block
-          width 18px
-          height 18px
+          width 32px
+          height 28px
           -webkit-app-region: no-drag
-          margin 0 5px
-          padding 2px
-          .icon-control
-            svg 
-              width 18px
-              height 18px
-              .color-fill
-                fill wihte
-    .info-music
-      font-size 14px
-      margin 0
-    .devtool
-      display block
-      -webkit-app-region: no-drag
+          padding 7px
+          text-align center
+          &:hover
+            background-color rgba(255,255,255,0.2)
+          &:hover:last-child
+            background-color rgba(255,0,0,0.35)
+          .icon-control 
+            width 14px
+            height 14px
+            .color-fill
+              fill #303030
+      .info-music
+        font-size 14px
+        margin 0
+        color white
+        font-weight 500
+        text-transform uppercase
+      .devtool
+        display block
+        height 28px
+        color white
+        font-weight 500
+        font-size 14px
+        text-transform uppercase
+        padding 0 5px
+        -webkit-app-region: no-drag
+        &:hover
+          background-color rgba(255,255,255,0.1)
 </style>

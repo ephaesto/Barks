@@ -14,7 +14,7 @@ export default {
 </script>
 <style lang="stylus" scoped>
   .color-fill
-    fill white
+    fill #303030
 </style>
 
 

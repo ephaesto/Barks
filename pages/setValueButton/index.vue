@@ -1,19 +1,29 @@
 <template>
   <div>
-    <v-btn color="success" @click="OpenFile">
-      OpenFile
-    </v-btn>
-    <v-btn color="purple" @click="PlaySound">
-      PlaySound
-    </v-btn>
-    <v-btn color="brown" @click="StopSound">
-      StopSound
-    </v-btn>
-    <div>
-      <v-btn color="warning" fab dark @click="showPath">
-        <v-icon>account_circle</v-icon>
+    <section class="sound-list">
+      <div class="resume-sound">
+        <div>
+          <p>une animation</p>
+        </div>
+        <h2>le titre de la chanson</h2>
+      </div>
+    </section>
+    <section class="button-place">
+      <v-btn color="success" @click="OpenFile">
+        OpenFile
       </v-btn>
-    </div>
+      <v-btn color="purple" @click="PlaySound">
+        PlaySound
+      </v-btn>
+      <v-btn color="brown" @click="StopSound">
+        StopSound
+      </v-btn>
+      <div>
+        <v-btn color="warning" fab dark @click="showPath">
+          <v-icon>account_circle</v-icon>
+        </v-btn>
+      </div>
+    </section>
   </div>
 </template>
 

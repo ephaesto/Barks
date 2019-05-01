@@ -45,7 +45,7 @@ const newWin = () => {
     backgroundColor: '#303030',
     frame: false,
     width: 1600,
-    height: 1280,
+    height: 1000,
     icon: myIcon,
     show: false, 
     webPreferences: {
