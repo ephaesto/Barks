@@ -1,4 +1,4 @@
-![Barks Logo](https://zupimages.net/up/19/12/eh4v.png)
+![Barks Logo](https://zupimages.net/up/19/18/hxm9.png)
 
 # Barks
 
