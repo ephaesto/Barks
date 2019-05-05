@@ -1,71 +1,84 @@
 <template>
-  <div class="content-my-app">
-    <section class="sound-block">
-      <div class="sound-resume">
-        <div>
-          <p>une animation</p>
-        </div>
-        <h2>le titre de la chanson</h2>
-      </div>
-      <div class="sound-list">
-        <div class="sound-spotify">
-          <div class="sound-title">
-            <h2>Music spotify</h2>
+  <multipane class="content-my-app" layout="vertical">
+    <div :style="{ width: '400px' }">
+      <section class="sound-block">
+        <div class="sound-resume">
+          <div>
+            <p>une animation</p>
           </div>
-          <ul>
-            <li> button music </li>
-            <li> button music </li>
-            <li> button music </li>
-            <li> button music </li>
-          </ul>
+          <h2>le titre de la chanson</h2>
         </div>
-        <div class="sound-soundcloud">
-          <div class="sound-title">
-            <h2>Music soundcloud</h2>
+        <div class="sound-list">
+          <div class="sound-spotify">
+            <div class="sound-title">
+              <h2>Music spotify</h2>
+            </div>
+            <ul>
+              <li> button music </li>
+              <li> button music </li>
+              <li> button music </li>
+              <li> button music </li>
+            </ul>
           </div>
-          <ul>
-            <li> button music </li>
-            <li> button music </li>
-            <li> button music </li>
-            <li> button music </li>
-          </ul>
-        </div>
-        <div class="sound-perso">
-          <div class="sound-title">
-            <h2>Music perso</h2>
+          <div class="sound-soundcloud">
+            <div class="sound-title">
+              <h2>Music soundcloud</h2>
+            </div>
+            <ul>
+              <li> button music </li>
+              <li> button music </li>
+              <li> button music </li>
+              <li> button music </li>
+            </ul>
           </div>
-          <ul>
-            <li> button music </li>
-            <li> button music </li>
-            <li> button music </li>
-            <li> button music </li>
-          </ul>
+          <div class="sound-perso">
+            <div class="sound-title">
+              <h2>Music perso</h2>
+            </div>
+            <ul>
+              <li> button music </li>
+              <li> button music </li>
+              <li> button music </li>
+              <li> button music </li>
+            </ul>
+          </div>
         </div>
-      </div>
-    </section>
-    <section class="button-block">
-      <v-btn color="success" @click="OpenFile">
-        OpenFile
-      </v-btn>
-      <v-btn color="purple" @click="PlaySound">
-        PlaySound
-      </v-btn>
-      <v-btn color="brown" @click="StopSound">
-        StopSound
-      </v-btn>
-      <div>
-        <v-btn color="warning" fab dark @click="showPath">
-          <v-icon>account_circle</v-icon>
+      </section>
+    </div>
+    <multipane-resizer />
+    <div :style="{ flexGrow: 1 }">
+      <section class="button-block">
+        <v-btn color="success" @click="OpenFile">
+          OpenFile
         </v-btn>
-      </div>
-    </section>
-  </div>
+        <v-btn color="purple" @click="PlaySound">
+          PlaySound
+        </v-btn>
+        <v-btn color="brown" @click="StopSound">
+          StopSound
+        </v-btn>
+        <div>
+          <v-btn color="warning" fab dark @click="showPath">
+            <v-icon>account_circle</v-icon>
+          </v-btn>
+          <v-btn color="red" fab dark @click="newWindows">
+            <v-icon>account_circle</v-icon>
+          </v-btn>
+        </div>
+      </section>
+    </div>
+  </multipane>
 </template>
 
 <script>
-import {remote} from 'electron'
+import {remote,ipcRenderer as ipc} from 'electron'
 import {Howl} from 'howler'
+import { Multipane, MultipaneResizer } from 'vue-multipane';
   export default {
+    components: {
+      Multipane,
+      MultipaneResizer
+    },
     data() {
       return {
         urlfile:[""],
@@ -98,6 +111,12 @@ import {Howl} from 'howler'
         console.log(this.urlfile)
         console.log(remote.getCurrentWindow())
         /* eslint-enable no-alert, no-console */
+      },
+      newWindows:function(){
+        ipc.send('setValueButton')
+        ipc.on('closedWindows', function () {
+            window.focus()
+        })
       }
     }
   }
@@ -107,13 +126,14 @@ import {Howl} from 'howler'
     display flex
     flex-direction row
     height 100%
+
     .sound-block
       display flex
       flex-direction row
       flex-wrap wrap
       justify-content space-between
       align-items center
-      width 400px
+      width  100%
       height 100%
       .sound-resume
         display flex
@@ -127,12 +147,16 @@ import {Howl} from 'howler'
         height 200px
       .sound-list
         height 100%
+        width 100%
+        div
+          width 100%
         .sound-title
          background-color #303030
          box-shadow: 2px 0px -2px 2px red inset
         ul
           background-color #292929
           box-shadow: 1px 0 2px 0 rgba(0,0,0,0.5) inset
+          width 100%
         .sound-perso
           height 100%
           ul

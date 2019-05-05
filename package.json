@@ -30,8 +30,10 @@
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-prettier": "^3.0.1",
     "howler": "^2.1.1",
+    "lowdb": "^1.0.0",
     "nuxt": "^2.6.1",
     "prettier": "^1.16.4",
+    "vue-multipane": "^0.9.5",
     "vuetify": "^1.5.7"
   },
   "devDependencies": {
