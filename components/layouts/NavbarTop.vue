@@ -1,6 +1,6 @@
 <template>
   <header>
-    <div class="navtop">
+    <nav class="navtop">
       <button v-if="Env" class="devtool" @click="devTools">
         Devtools
       </button>
@@ -24,7 +24,7 @@
           <close-icon class="icon-control" />
         </button>
       </div>
-    </div>  
+    </nav>  
   </header>
 </template>
 

@@ -59,6 +59,7 @@
         z-index 999
         width 53px
         height 53px
+        -webkit-app-region: drag 
         .color-fill
           fill white
 

@@ -73,13 +73,7 @@ module.exports = {
   },
   router: {
     mode: 'hash',
-    extendRoutes (routes,resolve) {
-      routes.push({
-        name: '/setValueButton',
-        path: 'setValueButton',
-        component: resolve(__dirname,'pages/setValueButton/index.vue')
-      })
-    }
+    
   },
   loading: false, // Disable default loading bar
   dev: process.env.NODE_ENV === 'DEV',
