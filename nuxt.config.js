@@ -73,7 +73,6 @@ module.exports = {
   },
   router: {
     mode: 'hash',
-    
   },
   loading: false, // Disable default loading bar
   dev: process.env.NODE_ENV === 'DEV',

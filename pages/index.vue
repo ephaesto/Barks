@@ -51,6 +51,9 @@
         <v-btn color="success" @click="OpenFile">
           OpenFile
         </v-btn>
+        <v-btn color="blue" @click="OpenFolder">
+          OpenFolder
+        </v-btn>
         <v-btn color="purple" @click="PlaySound">
           PlaySound
         </v-btn>
@@ -73,7 +76,8 @@
 <script>
 import {remote,ipcRenderer as ipc} from 'electron'
 import {Howl} from 'howler'
-import { Multipane, MultipaneResizer } from 'vue-multipane';
+import { Multipane, MultipaneResizer } from 'vue-multipane'
+import walkdir from 'walkdir'
   export default {
     components: {
       Multipane,
@@ -87,10 +91,62 @@ import { Multipane, MultipaneResizer } from 'vue-multipane';
     },
     methods: {
       OpenFile:function(){
-        remote.dialog.showOpenDialog((fileName) => {
-         fileName = fileName.map((path)=>{ return `file://${path}`})
-         return this.urlfile=fileName
-        })
+        
+        remote.dialog.showOpenDialog(
+          null,
+          {
+            filtres : [
+              {name :'Music',extensions:["mp3", "opus", "ogg", "wav", "aac", "m4a", "mp4", "webm","flac"]},
+            ],
+            properties : [ 
+              'openFile',
+              'multiSelections'
+            ]
+          },
+          (fileNames) => {
+              fileNames = fileNames.map((path)=>{ return `file://${path}`})
+              return this.urlfile=fileNames
+            }
+      
+        )
+      },
+       OpenFolder:function(){
+        remote.dialog.showOpenDialog(
+          null,
+          {
+            filtres : [
+              {name :'Music',extensions:["mp3", "opus", "ogg", "wav", "aac", "m4a", "mp4", "webm","flac"]},
+            ],
+            properties : [ 
+              'openDirectory',
+              'multiSelections'
+            ]
+          },
+          (fileNames) => {
+              fileNames = fileNames.map((path)=>{return path})
+                
+                walkdir(fileNames[0], {})
+                .on('file', (fn,stat) => {
+                  /* eslint-disable no-alert, no-console */
+                  console.log(`1:  ${fn}`)
+                  console.log(`1:  ${stat}`)
+                  /* eslint-enable no-alert, no-console */
+                })
+                .on('directory', (fn) => {
+                  /* eslint-disable no-alert, no-console */
+                  console.log(`2:  ${fn}`)
+                  /* eslint-enable no-alert, no-console */
+                })
+                .on('error', (fn,err) => {
+                  /* eslint-disable no-alert, no-console */
+                  console.log(`3:  ${fn}`)
+                  console.log(err)
+                  /* eslint-enable no-alert, no-console */
+                });
+
+              return this.urlfile=fileNames 
+            }
+        )
       },
       PlaySound:function(){
         const urlfile=[...this.urlfile]

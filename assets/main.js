@@ -6,6 +6,23 @@ const config = require('../nuxt.config.js')
 const os = require('os')
 const websocket = require('ws');
 
+const low = require('lowdb')
+const lodashId = require('lodash-id')
+const FileSync = require('lowdb/adapters/FileSync')
+
+const adapter = new FileSync("db.json")
+const db = low(adapter)
+
+db._.mixin(lodashId)
+const collection = db
+  .defaults({ posts: [] })
+  .get('posts')
+
+collection
+  .insert({ title: 'low!' })
+  .write()
+
+
 
 const isEnvDev = process.env.NODE_ENV === "DEV"
 config.rootDir = path.join(__dirname, '../')
@@ -30,6 +47,9 @@ const _NUXT_URL_ = `http://localhost:${server.address().port}`
 console.info('\x1b[33m%s\x1b[0m','Nuxt working on :',`\x1b[34m${_NUXT_URL_}\x1b[0m`)
 /* eslint-enable no-alert, no-console */
 new websocket.Server({ server });
+
+
+
 
 let win = null 
 const newWin = () => {
