@@ -121,44 +121,47 @@ import walkdir from 'walkdir'
           },
           (fileNames) => {
 
-                function walkfolder(url){
-                  let objSubUrl={}
-                  let i = 0
-                  walkdir(url,{no_recurse:true})
-                    .on('directory', (fn) => {
-                      objSubUrl[i]=fn
-                      i++
-                    })
-                    .on('error', (fn, err) => {
-                       /* eslint-disable no-alert, no-console */
-                        console.error(`!!!! ${fn} ${err}`);
-                        /* eslint-enable no-alert, no-console */
-                    })
-                  return objSubUrl
+                function walk(url){
+                  let arrayUrl= walkdir.sync(url,{no_recurse:true})          
+                  return arrayUrl
                 }
 
-                function createTree(pathList) {
+                function createTree(pathList,baseUrl) {
                   let tree = pathList.map((url) => {
                     let objFolder ={}
                     objFolder["name"]=path.basename(url)
                     objFolder["pathfolder"]=url
-                    let arraySubUrl = Object.values(walkfolder(url))
-                       /* eslint-disable no-alert, no-console */
-                      console.log(arraySubUrl)
-                      console.log(arraySubUrl !== [])
-                      /* eslint-enable no-alert, no-console */
-                    /*if(arraySubUrl !== [""]){
-                       objFolder["children"]= createTree(arraySubUrl)
-                    }*/
+                    objFolder["folderId"]=url.replace(baseUrl,'')
+                    let arraySubUrl = walk(url);
+                    arraySubUrl = arraySubUrl.filter(url => !url.includes('.'))
+
+                    if(arraySubUrl.length > 0){
+                       objFolder["children"]= createTree(arraySubUrl,baseUrl)
+                    }
                     return objFolder
                   } )
                   return tree
                 }
 
-                let jsonMusic = createTree(fileNames )
+                /*function listFiles(pathList,baseUrl){
+                  let listFiles = pathList.map((urlFolder) => {
+                    let arrayListFiles = walk(urlFolder);
+                    arrayListFiles = arraySubUrl.filter(url => !url.includes('.'))
+                    arrayListFiles.map((urlfiles) => {
+                      let objFile ={}
+                      objFile["name"]=path.basename(urlfiles)
+                      objFile["pathfolder"]=urlfiles
+                      objFile["folderId"]=urlfiles.replace(baseUrl,'')
+                      return objFolder
+                    } )
+                  } )
+                }*/
+
+                const baseUrl = path.dirname(fileNames[0])
+                let treeFolder = createTree(fileNames, baseUrl)
                 
                 /* eslint-disable no-alert, no-console */
-                  console.log(jsonMusic)
+                  console.log(treeFolder )
                   /* eslint-enable no-alert, no-console */
 
               return this.urlfile=fileNames 
