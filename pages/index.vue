@@ -77,6 +77,7 @@
 import {remote,ipcRenderer as ipc} from 'electron'
 import {Howl} from 'howler'
 import { Multipane, MultipaneResizer } from 'vue-multipane'
+import path from 'path'
 import walkdir from 'walkdir'
   export default {
     components: {
@@ -95,16 +96,14 @@ import walkdir from 'walkdir'
         remote.dialog.showOpenDialog(
           null,
           {
-            filtres : [
-              {name :'Music',extensions:["mp3", "opus", "ogg", "wav", "aac", "m4a", "mp4", "webm","flac"]},
-            ],
+            filtres : ["mp3", "opus", "ogg", "wav", "aac", "m4a", "mp4", "webm","flac"],
             properties : [ 
               'openFile',
               'multiSelections'
             ]
           },
           (fileNames) => {
-              fileNames = fileNames.map((path)=>{ return `file://${path}`})
+              fileNames = fileNames.map((pathFiles)=>{ return `file://${pathFiles}`})
               return this.urlfile=fileNames
             }
       
@@ -114,35 +113,53 @@ import walkdir from 'walkdir'
         remote.dialog.showOpenDialog(
           null,
           {
-            filtres : [
-              {name :'Music',extensions:["mp3", "opus", "ogg", "wav", "aac", "m4a", "mp4", "webm","flac"]},
-            ],
+            filtres : ["mp3", "opus", "ogg", "wav", "aac", "m4a", "mp4", "webm","flac"],
             properties : [ 
               'openDirectory',
               'multiSelections'
             ]
           },
           (fileNames) => {
-              fileNames = fileNames.map((path)=>{return path})
+
+                function walkfolder(url){
+                  let objSubUrl={}
+                  let i = 0
+                  walkdir(url,{no_recurse:true})
+                    .on('directory', (fn) => {
+                      objSubUrl[i]=fn
+                      i++
+                    })
+                    .on('error', (fn, err) => {
+                       /* eslint-disable no-alert, no-console */
+                        console.error(`!!!! ${fn} ${err}`);
+                        /* eslint-enable no-alert, no-console */
+                    })
+                  return objSubUrl
+                }
+
+                function createTree(pathList) {
+                  let tree = pathList.map((url) => {
+                    let objFolder ={}
+                    objFolder["name"]=path.basename(url)
+                    objFolder["pathfolder"]=url
+                    let arraySubUrl = Object.values(walkfolder(url))
+                       /* eslint-disable no-alert, no-console */
+                      console.log(arraySubUrl)
+                      console.log(arraySubUrl !== [])
+                      /* eslint-enable no-alert, no-console */
+                    /*if(arraySubUrl !== [""]){
+                       objFolder["children"]= createTree(arraySubUrl)
+                    }*/
+                    return objFolder
+                  } )
+                  return tree
+                }
+
+                let jsonMusic = createTree(fileNames )
                 
-                walkdir(fileNames[0], {})
-                .on('file', (fn,stat) => {
-                  /* eslint-disable no-alert, no-console */
-                  console.log(`1:  ${fn}`)
-                  console.log(`1:  ${stat}`)
+                /* eslint-disable no-alert, no-console */
+                  console.log(jsonMusic)
                   /* eslint-enable no-alert, no-console */
-                })
-                .on('directory', (fn) => {
-                  /* eslint-disable no-alert, no-console */
-                  console.log(`2:  ${fn}`)
-                  /* eslint-enable no-alert, no-console */
-                })
-                .on('error', (fn,err) => {
-                  /* eslint-disable no-alert, no-console */
-                  console.log(`3:  ${fn}`)
-                  console.log(err)
-                  /* eslint-enable no-alert, no-console */
-                });
 
               return this.urlfile=fileNames 
             }
@@ -221,3 +238,21 @@ import walkdir from 'walkdir'
       width 100%
 
 </style>
+
+
+sauvgarde mp3 : {
+  chanson : [chanson],
+  chanson/blabla : [chanson,blabla],
+  chanson/blabla/tata : [chanson,blabla,tata],
+}
+
+sauvgarde mp3 : {
+  chanson : {
+    blabla : {
+      tata : {
+
+      }
+    },
+  }
+}
+
