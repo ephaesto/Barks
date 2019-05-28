@@ -27,7 +27,7 @@
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
   },
   "dependencies": {
-    "eslint-config-prettier": "^4.1.0",
+    "eslint-config-prettier": "^4.3.0",
     "eslint-plugin-prettier": "^3.0.1",
     "howler": "^2.1.1",
     "lodash-id": "^0.14.0",
