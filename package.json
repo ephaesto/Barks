@@ -29,7 +29,7 @@
   "dependencies": {
     "eslint-config-prettier": "^4.3.0",
     "eslint-plugin-prettier": "^3.0.1",
-    "howler": "^2.1.1",
+    "howler": "^2.1.2",
     "lodash-id": "^0.14.0",
     "lowdb": "^1.0.0",
     "nuxt": "^2.7.1",
