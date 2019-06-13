@@ -5,7 +5,7 @@
         author : emeric lebbrecht
       </p>
       <p class="ma-0 caption">
-        version : 0.0.1
+        version : 0.1.0
       </p>
     </div>
   </footer>
@@ -30,7 +30,7 @@
       flex-direction row
       justify-content space-between
       padding 5px 20px 5px 20px
-      box-shadow: 2px 0px -2px 2px red inset
+      box-shadow: 2px 0px -2px 2px rgba(0,0,0,0.5) inset
 
 </style>
 

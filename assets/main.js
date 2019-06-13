@@ -11,18 +11,14 @@ const lodashId = require('lodash-id')
 const FileSync = require('lowdb/adapters/FileSync')
 
 const adapter = new FileSync("db.json")
-const db = low(adapter)
-
-db._.mixin(lodashId)
-const collection = db
-  .defaults({ posts: [] })
-  .get('posts')
-
-collection
-  .insert({ title: 'low!' })
-  .write()
-
-
+const db= low(adapter)
+  db._.mixin(lodashId)
+  db.defaults({
+     listFolder: [],
+     music:[],
+     button:[]
+    })
+    .write()
 
 const isEnvDev = process.env.NODE_ENV === "DEV"
 config.rootDir = path.join(__dirname, '../')
@@ -134,6 +130,9 @@ const newWin = () => {
       frame: false,
       icon: myIcon,
       show: false,
+      webPreferences: {
+        nodeIntegration: true
+      }
     })
     subWin.on('close', function () { 
       

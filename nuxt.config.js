@@ -8,67 +8,7 @@ module.exports = {
       { hid: 'description', name: 'description', content: 'BackOffice Online' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      {
-        rel: 'stylesheet',
-        type:'text/css',
-        href: './assets/fonts/Roboto-Black.ttf'
-      },
-      {
-        rel: 'stylesheet',
-        type:'text/css',
-        href: './assets/fonts/Roboto-BlackItalic.ttf'
-      },
-      {
-        rel: 'stylesheet',
-        type:'text/css',
-        href: './assets/fonts/Roboto-Bold.ttf'
-      },
-      {
-        rel: 'stylesheet',
-        type:'text/css',
-        href: './assets/fonts/Roboto-BoldItalic.ttf'
-      },
-      {
-        rel: 'stylesheet',
-        type:'text/css',
-        href: './assets/fonts/Roboto-Italic.ttf'
-      },
-      {
-        rel: 'stylesheet',
-        type:'text/css',
-        href: './assets/fonts/Roboto-Light.ttf'
-      },
-      {
-        rel: 'stylesheet',
-        type:'text/css',
-        href: './assets/fonts/Roboto-LightItalic.ttf'
-      },
-      {
-        rel: 'stylesheet',
-        type:'text/css',
-        href: './assets/fonts/Roboto-Medium.ttf'
-      },
-      {
-        rel: 'stylesheet',
-        type:'text/css',
-        href: './assets/fonts/Roboto-MediumItalic.ttf'
-      },
-      {
-        rel: 'stylesheet',
-        type:'text/css',
-        href: './assets/fonts/Roboto-Regular.ttf'
-      },
-      {
-        rel: 'stylesheet',
-        type:'text/css',
-        href: './assets/fonts/Roboto-Thin.ttf'
-      },
-      {
-        rel: 'stylesheet',
-        type:'text/css',
-        href: './assets/fonts/Roboto-ThinItalic.ttf'
-      }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
   router: {
