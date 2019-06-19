@@ -1,17 +1,17 @@
 <template>
   <section class="sound-block">
-    <div class="sound-resume">
+    <div v-if="typeWindows ==='home'" class="sound-resume">
       <div>
         <v-icon>music_note</v-icon>
       </div>
       <h2>le titre de la chanson</h2>
     </div>
-    <computer-list :height-windows="heightSoundBlock" />
+    <computer-list :height-windows="heightSoundBlock" :type-windows="typeWindows" />
   </section>
 </template>
 
 <script>
-  import ComputerList from '~/components/index/playlist/ComputerList.vue'
+  import ComputerList from '~/components/pages/playlist/ComputerList.vue'
 
   export default {
     name: 'Playlist',
@@ -22,11 +22,19 @@
       heightWindows:{
         type: Number,
         required: true
+      },
+      heightBlock:{
+        type: Number,
+        default: 100
+      },
+      typeWindows:{
+        type: String,
+        default:"home"
       }
     },
     computed:{
       heightSoundBlock(){
-        return this.heightWindows-100
+        return this.heightWindows-this.heightBlock
       }
     }
   }
@@ -55,12 +63,9 @@
       justify-content center
       align-items center
 
-
   .sound-block
     background-color #292929
     height 100%
-    border-radius 56px 0 0 0 / 100px 0 0 0
-    box-shadow 2px 2px 2px -2px rgba(0,0,0,0.5) inset
     position relative
     left 0
     top 0

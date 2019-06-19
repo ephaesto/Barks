@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="treeMusic" class="treeMusic" :style="{ height: HeighTree(heightWindows) }">
-      <computer-button :music-list="musicList" name-page="home" :size-padding="5" />
+      <computer-button :music-list="musicList" :type-windows="typeWindows" :size-padding="5" />
     </div>
     <div class="bottom-bar">
       <button class="button-search files" @click="OpenFile">
@@ -23,7 +23,7 @@
   import path from 'path'
   import walkdir from 'walkdir'
   import fs from 'fs'
-  import ComputerButton from '~/components/index/playlist/computerList/ComputerButton.vue'
+  import ComputerButton from '~/components/pages/playlist/computerList/ComputerButton.vue'
   import { mapActions, mapGetters } from 'vuex'
 
   export default {
@@ -34,6 +34,10 @@
     props: {
       heightWindows:{
         type: Number,
+        required: true
+      },
+      typeWindows:{
+        type: String,
         required: true
       }
     },

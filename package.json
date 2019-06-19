@@ -11,14 +11,22 @@
     "directories": {
       "buildResources": "static"
     },
-    "mac": {
-      "icon": "static/icon.icns"
-    },
-    "win": {
-      "icon": "static/icon.ico"
+    "dmg": {
+      "window": {
+        "height": 380,
+        "width": 540
+      }
     },
     "linux": {
-      "icon": "static/icons"
+      "icon": "_icons/icon.png"
+    },
+    "mac": {
+      "category": "public.app-category.utilities",
+      "icon": "_icons/icon.icns",
+      "type": "distribution"
+    },
+    "win": {
+      "icon": "_icons/icon.ico"
     }
   },
   "scripts": {

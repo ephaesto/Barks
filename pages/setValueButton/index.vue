@@ -1,69 +1,49 @@
 <template>
-  <div>
-    <section class="sound-list">
-      <div class="resume-sound">
-        <div>
-          <p>une animation</p>
-        </div>
-        <h2>le titre de la chanson</h2>
-      </div>
-    </section>
-    <section class="button-place">
-      <v-btn color="success" @click="OpenFile">
-        OpenFile
-      </v-btn>
-      <v-btn color="purple" @click="PlaySound">
-        PlaySound
-      </v-btn>
-      <v-btn color="brown" @click="StopSound">
-        StopSound
-      </v-btn>
-      <div>
-        <v-btn color="warning" fab dark @click="showPath">
-          <v-icon>account_circle</v-icon>
-        </v-btn>
-      </div>
-    </section>
-  </div>
+  <multipane class="content-my-app" layout="vertical" :style="{ height: HeightWrapper(heightWindows) }">
+    <div :style="{ width: '400px' }">
+      <playlist :height-windows="heightWindows" :height-block="heightBlock" type-windows="subWindows" />
+    </div>
+    <multipane-resizer />
+    <div :style="{ flexGrow: 1 }">
+      <add-button-music :height-windows="heightWindows" />
+    </div>
+  </multipane>
 </template>
 
 <script>
-import {remote} from 'electron'
-import {Howl} from 'howler'
+import Playlist from '~/components/pages/Playlist.vue'
+import AddButtonMusic from '~/components/pages/AddButtonMusic.vue'
+import { Multipane, MultipaneResizer } from 'vue-multipane'
+
   export default {
+    layout:'subWindows',
+    components: {
+      Multipane,
+      MultipaneResizer,
+      Playlist,
+      AddButtonMusic
+    },
     data() {
       return {
-        urlfile:[""],
-        sound:null
+        heightWindows: 0,
+        heightBlock:0
       }
     },
+    mounted() {
+      this.heightWindows = window.innerHeight-28 
+      window.addEventListener('resize', ()=>{ this.heightWindows = window.innerHeight-28} )
+    },
     methods: {
-      OpenFile:function(){
-        remote.dialog.showOpenDialog((fileName) => {
-         fileName = fileName.map((path)=>{ return `file://${path}`})
-         return this.urlfile=fileName
-        })
-      },
-      PlaySound:function(){
-        const urlfile=[...this.urlfile]
-        if(urlfile[0] !== ""){
-          this.sound = new Howl({
-                src: urlfile
-              })
-          this.sound.play()
-        }   
-      },
-      StopSound:function(){
-        if(this.sound){
-         this.sound.stop()
-        }
-      },
-      showPath:function(){
-         /* eslint-disable no-alert, no-console */
-        console.log(this.urlfile)
-        console.log(remote.getCurrentWindow())
-        /* eslint-enable no-alert, no-console */
+      HeightWrapper(heightWindows){
+        return heightWindows = heightWindows+"px" 
       }
     }
   }
 </script>
+
+<style lang="stylus" scoped>
+  .content-my-app
+    display flex
+    flex-direction row
+    height 100%
+</style>

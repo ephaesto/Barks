@@ -478,13 +478,6 @@
               "baseUrl": "C:\\Users\\emeric"
             }
           ]
-        },
-        {
-          "name": "BJH Octoberon",
-          "pathfolder": "C:\\Users\\emeric\\Music\\BJH Octoberon",
-          "open": true,
-          "folderId": "\\BJH Octoberon",
-          "baseUrl": "C:\\Users\\emeric\\Music"
         }
       ]
     }
@@ -2277,12 +2270,6 @@
       "pathFiles": "file://C:\\Users\\emeric\\Music\\sauvegarde mp3\\chansons\\Adoprixtoxis\\Bonus\\Petite Pub Bonus.mp3",
       "file": "mp3",
       "folderId": "\\Music\\sauvegarde mp3\\chansons\\Adoprixtoxis\\Bonus"
-    },
-    {
-      "name": "desktop.ini",
-      "pathFiles": "file://C:\\Users\\emeric\\Music\\sauvegarde mp3\\chansons\\Adoprixtoxis\\desktop.ini",
-      "file": "ini",
-      "folderId": "\\Music\\sauvegarde mp3\\chansons\\Adoprixtoxis"
     },
     {
       "name": "Episode 01 - Le naufrage.mp3",
@@ -8511,25 +8498,62 @@
       "pathFiles": "file://C:\\Users\\emeric\\Music\\ZZ TOP\\Complete Album - ZZtop Wrap.mp3",
       "file": "mp3",
       "folderId": "\\Music\\ZZ TOP"
-    },
-    {
-      "name": "01- The World Goes On.mp3",
-      "pathFiles": "file://C:\\Users\\emeric\\Music\\BJH Octoberon\\01- The World Goes On.mp3",
-      "file": "mp3",
-      "folderId": "\\BJH Octoberon"
-    },
-    {
-      "name": "02- May Day.mp3",
-      "pathFiles": "file://C:\\Users\\emeric\\Music\\BJH Octoberon\\02- May Day.mp3",
-      "file": "mp3",
-      "folderId": "\\BJH Octoberon"
-    },
-    {
-      "name": "03- Ra.mp3",
-      "pathFiles": "file://C:\\Users\\emeric\\Music\\BJH Octoberon\\03- Ra.mp3",
-      "file": "mp3",
-      "folderId": "\\BJH Octoberon"
     }
   ],
-  "button": []
+  "button": [
+    {
+      "titre": "teste",
+      "keyButton": "g",
+      "url": "file://C:\\Users\\emeric\\Music\\Daft Punk Human After All\\04 - Steam Machine.mp3",
+      "isClick": false
+    },
+    {
+      "titre": "rrtrer",
+      "keyButton": "f",
+      "url": "file://C:\\Users\\emeric\\Music\\Barclay James Harvest\\03- Ra.mp3",
+      "isClick": false
+    },
+    {
+      "titre": "ff",
+      "keyButton": "f",
+      "url": "file://C:\\Users\\emeric\\Music\\Barclay James Harvest\\04- Galadriel.mp3",
+      "isClick": false
+    },
+    {
+      "titre": "hhh",
+      "keyButton": "h",
+      "url": "file://C:\\Users\\emeric\\Music\\BJH Ring Of Changes\\04- High Wire.mp3",
+      "isClick": false
+    },
+    {
+      "titre": "iiiiii",
+      "keyButton": "i",
+      "url": "file://C:\\Users\\emeric\\Music\\Barclay James Harvest\\01- The World Goes On.mp3",
+      "isClick": false
+    },
+    {
+      "titre": "jjj",
+      "keyButton": "r",
+      "url": "file://C:\\Users\\emeric\\Music\\new music de soirée\\Galantis - Firebird (Official Audio).mp3",
+      "isClick": false
+    },
+    {
+      "titre": "ppp",
+      "keyButton": "p",
+      "url": "file://C:\\Users\\emeric\\Music\\David Guetta\\01 - Just For One Day (Heroes) Radio Edit.mp3",
+      "isClick": false
+    },
+    {
+      "titre": "iuuiui",
+      "keyButton": "x",
+      "url": "file://C:\\Users\\emeric\\Music\\Daft Punk Human After All\\06 - The Brainwasher.mp3",
+      "isClick": false
+    },
+    {
+      "titre": "dfff",
+      "keyButton": "q",
+      "url": "file://C:\\Users\\emeric\\Music\\Daft Punk Tron Legacy\\06. Daft Punk - Arena.mp3",
+      "isClick": false
+    }
+  ]
 }

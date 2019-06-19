@@ -24,10 +24,13 @@
           </div>
         </div>
         <transition name="fade">
-          <computer-button v-if="music.children && music.open" :array-folder-id="createSearchFolder(music.folderId,arrayFolderId)" :music-list="music.children" :name-page="namePage" :size-padding="Padding(sizePadding)" />
+          <computer-button v-if="music.children && music.open" :array-folder-id="createSearchFolder(music.folderId,arrayFolderId)" :music-list="music.children" :type-windows="typeWindows" :size-padding="Padding(sizePadding)" />
         </transition>
       </div>
-      <button v-else class="center-file button-no-nowrap" :style="{ paddingLeft:Padding(sizePadding)+'px'}">
+      <button v-else-if="!music.file && typeWindows === 'home'" class="center-file button-no-nowrap" :style="{ paddingLeft:Padding(sizePadding)+'px'}">
+        <v-icon>music_note</v-icon>{{ music.name }}
+      </button>
+      <button v-else class="center-file button-no-nowrap" :style="{ paddingLeft:Padding(sizePadding)+'px'}" @click="setThisMusic(music)">
         <v-icon>music_note</v-icon>{{ music.name }}
       </button>
     </div>  
@@ -40,7 +43,7 @@
   import path from 'path'
   import walkdir from 'walkdir'
   import fs from 'fs'
-  import ComputerButton from '~/components/index/playlist/computerList/ComputerButton.vue'
+  import ComputerButton from '~/components/pages/playlist/computerList/ComputerButton.vue'
   import { mapActions } from 'vuex'
 
   export default {
@@ -53,7 +56,7 @@
         type: Array,
         required: true
       },
-      namePage:{
+      typeWindows:{
         type: String,
         required: true
       },
@@ -72,7 +75,8 @@
       ...mapActions({
         setTreeExist:'setComputerTreeExist',
         setMusic:'setComputerMusic',
-        getMusic:'getMusicComputer'
+        getMusic:'getMusicComputer',
+        setThisMusic:'setThisMusicComputer'
       }),
       OpenFile:function(oldPath,baseUrl){
         remote.dialog.showOpenDialog(

@@ -147,9 +147,9 @@ const newWin = () => {
       const { default: installExtension, VUEJS_DEVTOOLS } = require('electron-devtools-installer')
   
       const subPollServer = () => {
-       httpGet(`${_NUXT_URL_}/setValueButon`, (res) => {
+       httpGet(`${_NUXT_URL_}#/setValueButton`, (res) => {
           if (res.statusCode === 200) { 
-            subWin.loadURL(`${_NUXT_URL_}/setValueButton`) 
+            subWin.loadURL(`${_NUXT_URL_}#/setValueButton`) 
           } else { 
             setTimeout(subPollServer, 300) 
           }
@@ -171,7 +171,7 @@ const newWin = () => {
       })
     }
     if (!isEnvDev) {
-      subWin.loadURL(`${_NUXT_URL_}/setValueButon`)
+      subWin.loadURL(`${_NUXT_URL_}#setValueButton`)
     }
     
     subWin.once('ready-to-show', () => {
