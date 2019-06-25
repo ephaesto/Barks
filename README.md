@@ -1,23 +1,17 @@
 <p align="center">
   <img width="128" height="128" src="https://zupimages.net/up/19/18/ddok.png">
 </p>
-
-<p align="center">
-  <img width="128" height="128" src="https://zupimages.net/up/19/18/ddok.png">
-</p>
-
 ## Barks
 
-> Nuxt + Electron
+Barks est un logiciel de music créer pour metre de l'embiance dans les Jeux de role. Sa particulariter est de permetre d'asigner un son a une touche du clavier et ainsi de pouvoir lancer ce son au clique de cette touche.
 
-50% 50% 50% 50% / 30% 70% 30% 70%
-80% 80% 80% 80% / 50% 50% 50% 50%
+## Les technologies utilisé
+Nuxt + Electron
 
-#36236F
-
-#B130BC
-
-#E3B712
+<p align="center">
+  <img width="128" height="128" src="https://zupimages.net/up/19/26/onxo.png">
+  <img width="128" height="128" src="https://zupimages.net/up/19/26/jx0a.png">
+</p>
 
 ## Build Setup
 
@@ -32,3 +26,7 @@ $ npm run dev
 $ npm run build
 
 For detailed explanation on how things work, checkout [Nuxt.js](https://github.com/nuxt/nuxt.js), [Electron.js](https://electronjs.org/), and [electron-builder](https://www.electron.build/).
+
+
+## License
+MIT
