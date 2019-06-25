@@ -49,7 +49,7 @@
   "devDependencies": {
     "@mdi/font": "^3.7.95",
     "@nuxtjs/eslint-config": "^0.0.1",
-    "babel-eslint": "^10.0.1",
+    "babel-eslint": "^10.0.2",
     "cross-env": "^5.1.4",
     "electron": "5.0.5",
     "electron-builder": "^20.43.0",
