@@ -4,7 +4,7 @@
 
 ## Barks
 
-Barks est un logiciel de music créer pour metre de l'embiance dans les Jeux de role. Sa particulariter est de permetre d'asigner un son a une touche du clavier et ainsi de pouvoir lancer ce son au clique de cette touche.
+Barks est un logiciel de musique créer pour mettre de l'ambiance dans les "Jeux de rôles". Sa particularité est de permettre d'assigner un son à une touche du clavier et ainsi de pouvoir lancer ce son aux cliques de cette touche.
 
 ## Les technologies utilisé
 
