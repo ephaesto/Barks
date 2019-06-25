@@ -13,7 +13,7 @@ Barks est un logiciel de musique créer pour mettre de l'ambiance dans les "Jeux
   <img width="128" height="128" src="https://zupimages.net/up/19/26/onxo.png">
   <img width="128" height="128" src="https://zupimages.net/up/19/26/20gt.png">
 </p>
-<p align="center">Nuxt + Electron + Howler</p>
+<p align="center">Nuxt   +   Electron   +   Howler</p>
 
 ## Build Setup
 
