@@ -10,7 +10,7 @@
       </p>
 
       
-      <div class="control">
+      <div class="control" :class="{ subWindows: subWindows }">
         <button @click="minimizeWindows">
           <reduce-icon class="icon-control" />
         </button>
@@ -41,6 +41,12 @@
       MinimizeIcon,
       MaximizeIcon,
       CloseIcon
+    },
+    props: {
+      subWindows :{
+        type: Boolean,
+        default:false
+      },
     },
     data() {
       return {
@@ -124,6 +130,11 @@
             height 14px
             .color-fill
               fill #303030
+        &.subWindows
+          button 
+            .icon-control 
+              .color-fill
+                fill #fff
       .info-music
         font-size 14px
         margin 0

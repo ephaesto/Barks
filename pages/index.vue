@@ -5,39 +5,25 @@
     </div>
     <multipane-resizer />
     <div :style="{ flexGrow: 1 }">
-      <section class="button-block">
-        <v-btn color="purple" @click="PlaySound">
-          PlaySound
-        </v-btn>
-        <v-btn color="brown" @click="StopSound">
-          StopSound
-        </v-btn>
-        <div>
-          <v-btn color="red" fab dark @click="newWindows">
-            <v-icon>account_circle</v-icon>
-          </v-btn>
-        </div>
-      </section>
+      <button-music-list :height-windows="heightWindows" />
     </div>
   </multipane>
 </template>
 
 <script>
-import {ipcRenderer as ipc} from 'electron'
-import Playlist from '~/components/index/Playlist.vue'
-import {Howl} from 'howler'
+import Playlist from '~/components/pages/Playlist.vue'
+import ButtonMusicList from '~/components/pages/ButtonMusicList.vue'
 import { Multipane, MultipaneResizer } from 'vue-multipane'
 
   export default {
     components: {
       Multipane,
       MultipaneResizer,
-      Playlist
+      Playlist,
+      ButtonMusicList
     },
     data() {
       return {
-        urlfile:[""],
-        sound:null,
         heightWindows: 0
       }
     },
@@ -48,26 +34,6 @@ import { Multipane, MultipaneResizer } from 'vue-multipane'
     methods: {
       HeightWrapper(heightWindows){
         return heightWindows = heightWindows+"px" 
-      },
-      PlaySound:function(){
-        const urlfile=[...this.urlfile]
-        if(urlfile[0] !== ""){
-          this.sound = new Howl({
-                src: urlfile
-              })
-          this.sound.play()
-        }   
-      },
-      StopSound:function(){
-        if(this.sound){
-         this.sound.stop()
-        }
-      },
-      newWindows:function(){
-        ipc.send('setValueButton')
-        ipc.on('closedWindows', function () {
-            window.focus()
-        })
       }
     }
   }

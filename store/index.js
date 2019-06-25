@@ -10,13 +10,16 @@ const strict = false
 const state = {
     musicComputer: [],
     computerTree:true,
-    musicList:true
+    musicList:true,
+    buttonMusicList:[],
+    thisMusic:null,
 }
 
 // getters
 const getters = {
-    getterMusicComputer: state => {return state.musicComputer}
-    
+    getterMusicComputer: state => {return state.musicComputer},
+    getterThisMusic: state => {return state.thisMusic},
+    getterButtonMusicList: state => {return state.buttonMusicList},
 }
 
 // mutations
@@ -29,6 +32,12 @@ const mutations = {
     },
     ADD_MUSIC_LIST  (state, list) {
         state.musicList = list
+    },
+    ADD_THIS_MUSIC (state, music) {
+        state.thisMusic = music
+    },
+    ADD_BUTTON_MUSIC_LIST (state, buttonMusicList) {
+        state.buttonMusicList = buttonMusicList
     }
 }
 
@@ -166,6 +175,45 @@ const actions = {
        })
        return commit('ADD_MUSIC_LIST',true)
      },
+
+     setThisMusicComputer({ commit },music){
+        return commit('ADD_THIS_MUSIC',music)
+     },
+     setButtonMusic({ commit },buttonMusic) {
+        db._.mixin(lodashId)
+       const allMusic = db.get("button").value()
+        
+       if (allMusic.length === 0){
+            db.get("button")
+                .push(buttonMusic)
+                .write()
+        return commit('ADD_BUTTON_MUSIC_LIST',[...db.get("button").value().map((button)=> {return {...button} } )])
+       }
+        const isOldMusic =db.get("button")
+            .filter({keyPress: buttonMusic.keyPress})
+            .value()
+        if(isOldMusic.length === 0 ){
+                db.get("button")
+                .push(buttonMusic)
+                .write()
+            return commit('ADD_BUTTON_MUSIC_LIST',[...db.get("button").value().map((button)=> {return {...button} } )])
+            }
+            isOldMusic
+            .update("titre", buttonMusic.titre)
+            .update("url", buttonMusic.url)
+            .write()
+       return commit('ADD_BUTTON_MUSIC_LIST',[...db.get("button").value().map((button)=> {return {...button} } )])
+     },
+     getButtonMusic({ commit }){
+        return commit('ADD_BUTTON_MUSIC_LIST',[...db.get("button").value().map((button)=> {return {...button} } )])
+    },
+    deleteButtonMusic({ commit },thisKeyButton){
+        db.get('button')
+        .remove({ keyButton: thisKeyButton })
+        .write()
+     return commit('ADD_BUTTON_MUSIC_LIST',[...db.get("button").value().map((button)=> {return {...button} } )])
+    },
+    
 }
 
 export default {
