@@ -47,7 +47,7 @@
     "walkdir": "^0.4.0"
   },
   "devDependencies": {
-    "@mdi/font": "^3.6.95",
+    "@mdi/font": "^3.7.95",
     "@nuxtjs/eslint-config": "^0.0.1",
     "babel-eslint": "^10.0.1",
     "cross-env": "^5.1.4",
