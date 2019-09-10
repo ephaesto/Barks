@@ -44,7 +44,7 @@
     "prettier": "^1.18.1",
     "vue-multipane": "^0.9.5",
     "vuetify": "^1.5.16",
-    "walkdir": "^0.4.0"
+    "walkdir": "^0.4.1"
   },
   "devDependencies": {
     "@mdi/font": "^3.7.95",
